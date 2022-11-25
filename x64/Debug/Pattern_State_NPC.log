@@ -1,0 +1,37 @@
+﻿  Main.cpp
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(9,20): error C2061: синтаксическая ошибка: идентификатор "State"
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(17,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(17,7): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(17,15): error C2334: непредвиденные лексемы перед "{"; пропуск вероятного тела функции
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(10,11): error C2065: state_: необъявленный идентификатор
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(10,2): error C2541: delete: нельзя удалять объекты, не являющиеся указателями
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(11,3): error C2065: state_: необъявленный идентификатор
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(11,12): error C2065: state: необъявленный идентификатор
+  NPC_Behavior.cpp
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(9,20): error C2061: синтаксическая ошибка: идентификатор "State"
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(17,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(17,7): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(17,15): error C2334: непредвиденные лексемы перед "{"; пропуск вероятного тела функции
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(10,11): error C2065: state_: необъявленный идентификатор
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(10,2): error C2541: delete: нельзя удалять объекты, не являющиеся указателями
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(11,3): error C2065: state_: необъявленный идентификатор
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(11,12): error C2065: state: необъявленный идентификатор
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(3,25): error C2061: синтаксическая ошибка: идентификатор "On_guard"
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(3,40): error C3329: синтаксическая ошибка: ожидался "}", а не ")"
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(3,41): error C2612: недопустимый завершающий "}" в списке инициализации членов и базовых классов
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(3,43): error C2447: {: отсутствует заголовок функции (возможно, используется формальный список старого типа)
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(10,3): error C2065: state_: необъявленный идентификатор
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(13,2): error C2065: state_: необъявленный идентификатор
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(34,6): error C2660: NPC::change_state: функция не принимает 1 аргументов
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(9,7): message : см. объявление "NPC::change_state"
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(34,6): message : при попытке сопоставить список аргументов "(Fight *)"
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(40,6): error C2660: NPC::change_state: функция не принимает 1 аргументов
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(9,7): message : см. объявление "NPC::change_state"
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(40,6): message : при попытке сопоставить список аргументов "(Run_away *)"
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(42,1): error C2059: синтаксическая ошибка: }
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(46,2): error C2039: "NPC_": не является членом "NPC".
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(5,7): message : см. объявление "NPC"
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(53,6): error C2660: NPC::change_state: функция не принимает 1 аргументов
+D:\Projects\Pattern_State_NPC\NPC_Behavior.h(9,7): message : см. объявление "NPC::change_state"
+D:\Projects\Pattern_State_NPC\NPC_Behavior.cpp(53,6): message : при попытке сопоставить список аргументов "(On_guard *)"
+  Создание кода...
