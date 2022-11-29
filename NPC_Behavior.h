@@ -1,6 +1,17 @@
 #pragma once
 #include <iostream>
 #include <vector>
+class Pool_NPC
+{
+};
+
+class Game {
+public:
+    void Run_NPCs();
+private:
+    Pool_NPC poolNpc{};
+};
+
 
 class NPC {
 public:
@@ -12,8 +23,8 @@ public:
     void On_guard();
     void Run_away();
     void Fight();
+    void Exit();
     bool has_energy();
-    void call_energy_ok();
 
 private:
     State* state_{ nullptr };
@@ -28,6 +39,7 @@ public:
     virtual void escaped() { std::cout << "NOT IMPLEMENTED!" << std::endl; }
     virtual void set_Npc(State* state) { std::cout << "NOT IMPLEMENTED!" << std::endl; }
     virtual void died() { std::cout << "NOT IMPLEMENTED!" << std::endl; };
+    virtual void energy_Ok() { std::cout << "NOT IMPLEMENTED!" << std::endl; }
 
 protected:
     NPC* NPC_{ nullptr };
@@ -44,7 +56,7 @@ class Fight : public State {
 public:
     using State::State; // Fight(NPC* npc) :State(npc) { }
     void losing_fight() override;
-    void energy_Ok();
+    void energy_Ok() override;
 };
 
 class Run_away : public State {
@@ -52,4 +64,8 @@ public:
     using State::State; // Run_away(NPC* npc) :State(npc) { }
     void escaped() override;
     void died()override;
+};
+class Exit : public State, Game{
+    using State::State;
+    //void died()override;
 };
