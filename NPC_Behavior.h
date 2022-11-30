@@ -1,19 +1,24 @@
 #pragma once
 #include <iostream>
 #include <vector>
-class Pool_NPC {};
+class Pool_NPC {
+public:
+    Pool_NPC(int countNPC);
+    NPC* getNextNPC();
+private:
+    std::vector<NPC*>poollNPC;
+};
 
 class Game {
 public:
     void Run_NPCs();
-
 private:
-    Pool_NPC poolNpc{};
+    Pool_NPC poollNpñ{};
 };
 
 class NPC {
 public:
-    NPC();
+    NPC() = default;
     void change_state(State* state) {
         delete state_;
         state_ = state;
@@ -21,8 +26,8 @@ public:
     void On_guard();
     void Run_away();
     void Fight();
-    void Exit();
     bool has_energy();
+    void Run();
 
 private:
     State* state_{ nullptr };
