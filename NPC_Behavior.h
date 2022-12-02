@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
+
 class Pool_NPC {
 public:
     Pool_NPC(int countNPC);
@@ -11,9 +12,10 @@ private:
 
 class Game {
 public:
+    Game(int countNPC) : poollNpс{ countNPC } {};
     void Run_NPCs();
 private:
-    Pool_NPC poollNpс{};
+    Pool_NPC poollNpс;
 };
 
 class NPC {
@@ -28,51 +30,53 @@ public:
     void Fight();
     bool has_energy();
     void Run();
-
 private:
     State* state_{ nullptr };
     int energy_{ 100 };
 };
 class State {
 public:
+    State() = default;
     State(NPC* npc) : NPC_{ npc } {}
+    State(Game* game) : Game_{ game } {}
     virtual void see_small_enemy() {
         std::cout << "NOT IMPLEMENTED!" << std::endl;
     }
     virtual void see_big_enemy() { std::cout << "NOT IMPLEMENTED!" << std::endl; }
     virtual void losing_fight() { std::cout << "NOT IMPLEMENTED!" << std::endl; }
     virtual void escaped() { std::cout << "NOT IMPLEMENTED!" << std::endl; }
-    virtual void set_Npc(State* state) {
-        std::cout << "NOT IMPLEMENTED!" << std::endl;
-    }
+    virtual void set_Npc(State* state) { std::cout << "NOT IMPLEMENTED!" << std::endl;}
     virtual void died() { std::cout << "NOT IMPLEMENTED!" << std::endl; };
     virtual void energy_Ok() { std::cout << "NOT IMPLEMENTED!" << std::endl; }
-
+    virtual void call_Next_NPC() { std::cout << "NOT IMPLEMENTED!" << std::endl; };
 protected:
     NPC* NPC_{ nullptr };
+    Game* Game_{ nullptr };
 };
 
 class On_guard : public State {
 public:
-    using State::State; // On_guard(NPC* npc):State(npc){ }
+    using State::State; 
     void see_small_enemy() override;
     void see_big_enemy() override;
 };
 
 class Fight : public State {
 public:
-    using State::State; // Fight(NPC* npc) :State(npc) { }
+    using State::State; 
     void losing_fight() override;
     void energy_Ok() override;
 };
 
 class Run_away : public State {
 public:
-    using State::State; // Run_away(NPC* npc) :State(npc) { }
+    using State::State; 
     void escaped() override;
     void died() override;
+private:
+    State* state_died = new Died();
 };
-class Exit : public State, Game {
-    using State::State;
-    // void died()override;
+class Died : public State{ // я должен перейти в Game->RunNpc  для того, чтобы взять новый NPC??
+public:
+    void call_Next_NPC() override;
 };
