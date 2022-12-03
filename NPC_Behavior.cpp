@@ -2,18 +2,14 @@
 constexpr int small_enemy{ 2 };
 constexpr int big_enemy{ 5 };
 constexpr int NPC_Wounded{ 1 };
-constexpr int NPC_wounded_enemy{5};
+constexpr int NPC_wounded_enemy{ 5 };
 constexpr int NPC_DIED{ 2 };
 constexpr int NPC_could_run{ 4 };
 constexpr int not_possible_to_restore_energy{ 1 };
 
 bool NPC::has_energy() { return energy_ > 50; }
 
-void NPC::Run()
-{
-    state_ = new On_guard();
-}
-
+void NPC::Run() { state_ = new On_guard(); }
 
 void NPC::On_guard() {
     auto random{ rand() % 5 };
@@ -32,12 +28,12 @@ void NPC::Fight() {
     auto random{ rand() % 6 };
 
     while (random != NPC_Wounded) {
-    if (random == NPC_wounded_enemy) {
-        std::cout << "NPC wounded the enemy!" << std::endl;
-        continue;
-    }
-     std::cout << "NPC and enemy missed!" << std::endl;
-     random = rand() % 6 ;
+        if (random == NPC_wounded_enemy) {
+            std::cout << "NPC wounded the enemy!" << std::endl;
+            break;
+        }
+        std::cout << "NPC and enemy missed!" << std::endl;
+        random = rand() % 6;
     }
     if (random == NPC_Wounded) {
         std::cout << "NPC Wounded!" << std::endl;
@@ -54,15 +50,16 @@ void NPC::Run_away() {
     auto random{ rand() % 5 };
     while (random != NPC_DIED && random != NPC_could_run) {
         std::cout << " NPC running! " << std::endl;
-         random = rand() % 5 ;
+        random = rand() % 5;
     }
-        if (random == NPC_DIED) {
-            std::cout << "NPC could not escape from a big enemy, NPC DIED!"<< std::endl;
-            state_->died();
-            return;
-        }
-        std::cout << " Ran away from the big enemy " << std::endl;
-        state_->escaped();
+    if (random == NPC_DIED) {
+        std::cout << "NPC could not escape from a big enemy, NPC DIED!"
+            << std::endl;
+        state_->died();
+        return;
+    }
+    std::cout << " Ran away from the big enemy " << std::endl;
+    state_->escaped();
 }
 
 void On_guard::see_small_enemy() {
@@ -89,30 +86,23 @@ void Run_away::escaped() {
 
 void Run_away::died() {
     std::cout << " NPC object died!" << std::endl;
+    State* state_died = new Died();
     delete NPC_;
     state_died->call_Next_NPC();
 }
 
-Pool_NPC::Pool_NPC(int countNPC)
-{
+Pool_NPC::Pool_NPC(int countNPC) {
     for (int i{}; i < countNPC; ++i) {
         poollNPC.push_back(new NPC{});
     }
 }
 
-NPC* Pool_NPC::getNextNPC()
-{
+NPC* Pool_NPC::getNextNPC() {
     auto npc{ poollNPC.back() };
     poollNPC.pop_back();
     return npc;
 }
 
-void Game::Run_NPCs()
-{
-    poollNpñ.getNextNPC()->Run();
-}
+void Game::Run_NPCs() { poollNpñ.getNextNPC()->Run(); }
 
-void Died::call_Next_NPC()
-{
-    Game_->Run_NPCs();
-}
+void Died::call_Next_NPC() { Game_->Run_NPCs(); }
