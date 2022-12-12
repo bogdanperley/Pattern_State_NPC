@@ -4,8 +4,9 @@
 
 class Pool_NPC {
 public:
+    Pool_NPC() = default;
     Pool_NPC(int countNPC);
-    NPC* getNextNPC();
+    NPC* getNextNPC(); 
 
 private:
     std::vector<NPC*> poollNPC;
@@ -13,10 +14,13 @@ private:
 
 class Game {
 public:
+    Game() : state_died{ new Died(this) } { }
     Game(int countNPC) : poollNpñ{ countNPC } {};
     void Run_NPCs();
+    State* get_State_Died();
 
 private:
+    State* state_died;
     Pool_NPC poollNpñ;
 };
 
@@ -39,7 +43,6 @@ private:
 };
 class State {
 public:
-    State() = default;
     State(NPC* npc) : NPC_{ npc } {}
     State(Game* game) : Game_{ game } {}
     virtual void see_small_enemy() {
@@ -83,5 +86,7 @@ public:
     void died() override;
 };
 class Died : public State {
+public:
+    using State::State;
     void call_Next_NPC() override;
 };
