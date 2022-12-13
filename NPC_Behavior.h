@@ -15,13 +15,13 @@ private:
 class Game {
 public:
     Game() : state_died{ new Died(this) } { }
-    Game(int countNPC) : poollNpñ{ countNPC } {};
+    Game(int countNPC) : poollNpn{ countNPC } {};
     void Run_NPCs();
     State* get_State_Died();
 
 private:
     State* state_died;
-    Pool_NPC poollNpñ;
+    Pool_NPC poollNpn;
 };
 
 class NPC {
