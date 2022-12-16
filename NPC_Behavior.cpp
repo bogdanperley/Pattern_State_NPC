@@ -123,7 +123,7 @@ NPC* Pool_NPC::getNextNPC() {
     return npc;
 }
 
-void Game::Run_NPCs() { poollNpñ.getNextNPC()->Run(); }
+void Game::Run_NPCs() { poollNpc.getNextNPC()->Run(); }
 
 State* Game::get_State_Died()
 {
